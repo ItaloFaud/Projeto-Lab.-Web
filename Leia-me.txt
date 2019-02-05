@@ -1,0 +1,12 @@
+*ORIENTAÇÕES AO GRUPO*
+
+1- Quando for realizar alguma atividade em algum arquivo, entre em contato com o grupo
+   para saber se alguém já está alterando aquele específico.
+
+2- Sempre matenha seu projeto atualizado (combiná-lo com o q está no Git) 
+   e sempre o atualize no Git, quando realizar alguma alteração.
+
+3- Quando realizar uma atividade, não altere arquivos em que outras pessoas estão
+   trabalhando, isso levará a perda *TOTAL* do projeto. 
+
+	//Em breve novas orientações//	
