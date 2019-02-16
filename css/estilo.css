@@ -1,0 +1,38 @@
+* {
+  margin: 0 auto;
+  padding: 0;
+  font-size: 100%;
+  border: none;
+  outline: none;
+  font-weight: 300;
+  box-sizing: border-box;
+}
+
+body {
+  color: red;
+  font-size: 40px;
+  font-family: "Ubuntu", sans-serif;
+  background-color: black;
+}
+body p {
+  color: yellow;
+  font-size: 20px;
+}
+body h1 {
+  font-size: 120px;
+}
+body h2 {
+  font-size: 80px;
+}
+body a {
+  text-decoration: none;
+  color: blue;
+}
+body ul {
+  list-style: none;
+}
+body img {
+  max-width: 100%;
+}
+
+/*# sourceMappingURL=estilo.css.map */
