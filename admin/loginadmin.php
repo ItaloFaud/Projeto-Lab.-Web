@@ -1,36 +1,12 @@
-<?php
-include "DAO/usuarioDAO.php";
-session_start();
-if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['senha']) && !empty($_POST['senha'])) {
-	$Contato = new Usuario;
-	$ContatoDAO = new UsuarioDAO;
-			
-			$Contato->setEmail($_POST['email']);
-			$Contato->setSenha(md5($_POST['senha']));
-
-
-			
-			foreach ($ContatoDAO->Logar($Contato) as $key) {	
-			$_SESSION['user'] = $key['nome'];
-			echo '
-				<script type="text/javascript">
-					alert("Logado!");
-					location.href = "index.php";
-				</script>			
-				';
-		}
-}
-
-?>
 
 
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Testando SASS</title>
-	<link rel="stylesheet" type="text/css" href="CSS/style.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="CSS/animate.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/animate.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
@@ -38,12 +14,12 @@ if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['senha']) 
 <body>
 	<div class="main">
 			<!-- MENU -->
-			<?php include "menu.php"; ?>
+			
 			<!-- BANNER -->
 			<div class="banner">
 				<div class="title title-full">
 					<h2>Pet's Life &copy</h2>
-					<h3>Login</h3>
+					<h3>Login Administrativo</h3>
 				</div>
 				<!-- <div class="buttons">
 					<button class="btn btn-cadastrar"> Cadastrar <i class="fa fa-arrow-circle-right"></i></button>
@@ -63,7 +39,7 @@ if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['senha']) 
 
 				<article class="servico-2">
 					<section class="form-2">
-						<form method="POST">
+						<form action="teste.php" method="POST">
 							<h3>Email</h3>
 							<input type="email" placeholder="Email" name="email">
 							<h3>Senha</h3>

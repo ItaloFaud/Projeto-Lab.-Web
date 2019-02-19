@@ -1,7 +1,65 @@
+
+
+<?php
+	
+	include "DAO/usuarioDAO.php";
+	session_start();
+	if (isset($_SESSION['user'])) {
+		# code...
+		echo '
+		<script type="text/javascript">
+			alert("Você já está logado");
+			location.href = "index.php";
+		</script>
+		';
+	}
+
+
+	if (isset($_POST['nome']) && !empty($_POST['nome']) && isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['senha']) && !empty($_POST['senha']) && isset($_POST['telefone']) && !empty($_POST['telefone'])) {
+			$Contato = new Usuario;
+			$ContatoDAO = new UsuarioDAO;
+			$Contato->setNome($_POST['nome']);
+			$Contato->setEmail($_POST['email']);
+			$Contato->setSenha(md5($_POST['senha']));
+			$Contato->setTelefone($_POST['telefone']);
+			$ContatoDAO->Cadastrar($Contato);
+
+			if ($ContatoDAO->Cadastrar($Contato)) {
+				$_SESSION['user'] = $Contato->getNome();
+				echo '
+				<script type="text/javascript">
+					alert("Cadastrado!");
+					location.href = "index.php";
+				</script>			
+				';	
+			}else{
+				echo '
+				<script type="text/javascript">
+					alert("Email já cadastrado");
+				</script>			
+				';
+			}
+			
+
+
+
+	}elseif (isset($_POST['nome']) && empty($_POST['nome']) && isset($_POST['email']) && empty($_POST['email']) && isset($_POST['senha']) && empty($_POST['senha']) && isset($_POST['telefone']) && empty($_POST['telefone'])) {
+		# code...
+
+			echo '
+			<script type="text/javascript">
+				alert("Não cadastrado");
+			</script>			
+		';
+	}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Testando SASS</title>
+	<title>Cadastro</title>
 
 	<link rel="stylesheet" type="text/css" href="CSS/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
@@ -38,15 +96,15 @@
 
 				<article class="servico-2">
 					<section class="form-2">
-						<form>
+						<form method="post">
 							<h3>Email</h3>
 							<input type="email" placeholder="Email" name="email">
 							<h3>Nome</h3>
-							<input type="text" placeholder="Nome" name="email">
+							<input type="text" placeholder="Nome" name="nome">
 							<h3>Senha</h3>
-							<input type="password" placeholder="Senha" name="email">
+							<input type="password" placeholder="Senha" name="senha">
 							<h3>Telefone</h3>
-							<input type="text" placeholder="Telefone" name="email">
+							<input type="text" placeholder="Telefone" name="telefone">
 							<button> Cadastrar </button>
 						</form>
 					</section>			

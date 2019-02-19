@@ -1,3 +1,14 @@
+<?php
+//error_reporting(0);
+session_start();
+if (isset($_GET['sair']) && $_GET['sair'] === "s") {
+	
+	session_destroy();
+	unset($_SESSION['sair']);
+	//Procurar funçao que regarregue a pg
+}
+
+?>
 <header class="menu">
 					<a href="index.php"><h1 class="logo"></h1></a>
 					<button class="btn-menu"><i class="fa fa-bars fa-lg"></i></button>
@@ -11,14 +22,30 @@
 							<li><a href="login.php">Login</a></li>
 						</ul>
 					</nav>
-
+					
 					<nav class="nav-2">
 						<ul>
-							<li><a href="#">Faça seu login</a>
-								<ul>
-									<li><a href="carrinho.php">Ver carrinho</a><i class="fas fa-shopping-cart"></i></li>
-									<li><a href="#">Sair</a><i class="fas fa-sign-out-alt"></i></li>
-								</ul>
+							<?php
+
+
+									if (isset($_SESSION['user'])) {
+									echo '
+									<li><a href="index.php">'.$_SESSION['user'].'</a>
+									<ul>
+							
+								
+										<li><a href="carrinho.php">Ver carrinho</a><i class="fas fa-shopping-cart"></i></li>
+										<li><a href="refresh.php?sair=s">Sair</a><i class="fas fa-sign-out-alt"></i></li>
+									</ul>
+									';	
+									}else{
+									 echo '
+									<li><a href="login.php">Faça seu login</a>';
+									}
+
+
+								?>
+								
 							</li>
 						</ul>
 					</nav>
