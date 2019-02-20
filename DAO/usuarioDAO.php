@@ -2,7 +2,6 @@
 /**
  * 
  */
-
 include "Classes/conexao.php";
 include "Classes/usuario.php";
 class UsuarioDAO {

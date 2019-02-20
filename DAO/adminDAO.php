@@ -7,10 +7,9 @@
 include "../Classes/admin.php";
 include "../Classes/conexao.php";
 
-class AdminDAO
-{
-	function Logar(Admin $a)
-	{
+class AdminDAO{
+
+	function Logar(Admin $a){
 		$pdo = new Conexao;
 		$con = $pdo->Conectar();
 		$BuscaAdm = $con->prepare("SELECT * FROM admin WHERE email = ? AND senha = ?");

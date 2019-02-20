@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Testando SASS</title>
+	<title>Carrinho</title>
 
 	<link rel="stylesheet" type="text/css" href="CSS/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
@@ -22,9 +22,19 @@
 					<br>
 					<h3><i>Carrinho</i></h3>
 				</div>
+				<script type="text/javascript">
+					function Cadastro() {
+						location.href = "cadastro.php";
+					}
+
+					function Sobre() {
+						location.href = "sobre.php";
+					}
+				</script>
 				<div class="buttons">
-					<button class="btn btn-cadastrar"> Cadastrar <i class="fa fa-arrow-circle-right"></i></button>
-					<button class="btn btn-sobre"> Sobre <i class="fa fa-question-circle"></i></button>
+					<!-- Colocar links -->
+					<button onclick="Cadastro()" class="btn btn-cadastrar"> Cadastrar <i class="fa fa-arrow-circle-right"></i></button>
+					<button onclick="Sobre()" class="btn btn-sobre"> Sobre <i class="fa fa-question-circle"></i></button>
 				</div>
 			</div>
 			<!-- MATÉRIAS -->
@@ -49,6 +59,7 @@
 											<img src="imgs/Darth_Vader_TFU.jpg">
 										</div>
 										</center>
+										<a href="atualizar.php">Retirar do carrinho</a>
 									</td>
 									<td>Cachorro</td>
 									<td>2</td>

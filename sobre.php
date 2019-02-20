@@ -21,9 +21,19 @@
 					<h2><i>Pet's Life &copy</i></h2>
 					<h3>O melhor lugar para o seu amigo.</h3>
 				</div>
+				<script type="text/javascript">
+					function Cadastro() {
+						location.href = "cadastro.php";
+					}
+
+					function Sobre() {
+						location.href = "sobre.php";
+					}
+				</script>
 				<div class="buttons">
-					<button class="btn btn-cadastrar"> Cadastrar <i class="fa fa-arrow-circle-right"></i></button>
-					<button class="btn btn-sobre"> Sobre <i class="fa fa-question-circle"></i></button>
+					<!-- Colocar links -->
+					<button onclick="Cadastro()" class="btn btn-cadastrar"> Cadastrar <i class="fa fa-arrow-circle-right"></i></button>
+					<button onclick="Sobre()" class="btn btn-sobre"> Sobre <i class="fa fa-question-circle"></i></button>
 				</div>
 			</div>
 			<!-- MATÉRIAS -->

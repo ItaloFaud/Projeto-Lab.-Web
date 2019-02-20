@@ -1,7 +1,16 @@
 <?php
 include "DAO/usuarioDAO.php";
 session_start();
-if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['senha']) && !empty($_POST['senha'])) {
+
+if (isset($_SESSION['user'])) {
+	echo '
+						<script type="text/javascript">
+							alert("Você já está logado");
+							location.href = "index.php";
+						</script>			
+	';
+}else{
+	if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['senha']) && !empty($_POST['senha'])) {
 	$Contato = new Usuario;
 	$ContatoDAO = new UsuarioDAO;
 			
@@ -9,17 +18,29 @@ if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['senha']) 
 			$Contato->setSenha(md5($_POST['senha']));
 
 
+			if ($ContatoDAO->Logar($Contato)) {
+				# code...
+				foreach ($ContatoDAO->Logar($Contato) as $key) {	
+					$_SESSION['user'] = $key['nome'];
+					echo '
+						<script type="text/javascript">
+							alert("Logado!");
+							location.href = "index.php";
+						</script>			
+						';
+				}
+			}else{
+				echo '
+						<script type="text/javascript">
+							alert("Senha ou email errado");
+							
+						</script>			
+						';
+			}
 			
-			foreach ($ContatoDAO->Logar($Contato) as $key) {	
-			$_SESSION['user'] = $key['nome'];
-			echo '
-				<script type="text/javascript">
-					alert("Logado!");
-					location.href = "index.php";
-				</script>			
-				';
-		}
+}	
 }
+
 
 ?>
 

@@ -1,12 +1,6 @@
 <?php
 //error_reporting(0);
 session_start();
-if (isset($_GET['sair']) && $_GET['sair'] === "s") {
-	
-	session_destroy();
-	unset($_SESSION['sair']);
-	//Procurar funçao que regarregue a pg
-}
 
 ?>
 <header class="menu">
@@ -17,7 +11,7 @@ if (isset($_GET['sair']) && $_GET['sair'] === "s") {
 						<ul>
 							<li><a href="index.php">Home</a></li>
 							<li><a id="categoria" href="#">Categorias</a></li>
-							<li><a href="sobre.php">Sobre nos</a></li>
+							<li><a href="sobre.php">Sobre nós</a></li>
 							<li><a href="cadastro.php">Cadastro</a></li>
 							<li><a href="login.php">Login</a></li>
 						</ul>

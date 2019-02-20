@@ -5,6 +5,7 @@
 
 	echo '
 		<script type="text/javascript">
+			alert("'.$_SESSION['user_admin'].' lll");
 			location.href = "index.php";	
 		</script>	
 	';

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Testando SASS</title>
+	<title>Pet's Life</title>
 
 	<link rel="stylesheet" type="text/css" href="CSS/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
@@ -56,6 +56,7 @@
 					<article class="servico-2">
 					<section class="form-4">
 						<form><!-- INPUT HIDDEN -->
+							<input type="hidden" name="">
 							<button>Adicionar ao carrinho <i class="fas fa-shopping-cart"></i></button>
 						</form>
 					</section>			
