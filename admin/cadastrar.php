@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,6 +36,7 @@
 			<!-- MATÉRIAS -->
 			<!-- Arrumar opçoes dos campos select -->
 			<!-- move_uploaded_file($_FILES['foto1']['tmp_name'], "imgs/".$_FILES['foto1']['name']); -->
+			<!-- Pedim -->
 			<?php
 			if (isset($_GET['form']) && !$_GET['form'] == "") {
 				if ($_GET['form'] == 'cat') {
@@ -44,9 +46,9 @@
 						<article class="servico-2">
 							<section class="form-2">
 								<!-- Categoria -->
-								<form>
+								<form action="cadastrar_pdo.php" method="post">
 									<h3>Nome</h3>
-									<input type="text" placeholder="Nome da categoria" name="nome">	
+									<input type="text" placeholder="Nome da categoria" name="nomecat">	
 									<button> Cadastrar </button>
 								</form>
 							</section>			
@@ -55,30 +57,35 @@
 					';
 
 				}elseif ($_GET['form'] == 'produ') {
+					
+					include "../DAO/categoriaDAO.php";
+
 					echo '
 
 					<main class="servicos">
 						<article class="servico-2">
 							<section class="form-2">
 								<!-- Produtos -->
-								<form enctype="multipart/form-data">
+								<form action="cadastrar_pdo.php" method="post" enctype="multipart/form-data">
 									<h3>Nome</h3>
-									<input type="text" placeholder="Nome do produto" name="nome">
+									<input type="text" placeholder="Nome do produto" name="nomepro">
 									<h3>Categoria</h3>
-									<select name="categoria">
-										<option value="1">Nome cat</option>
-										<option value="1">Nome cat</option>
-										<option value="1">Nome cat</option>
-									</select>
+									<select name="categoria">';
+
+										$sql = new CategoriaDAO;
+
+										foreach ($sql->Consultar() as $key) {
+											echo '
+												<option value="'.$key['id'].'">'.$key['id'].' - '.$key['nome'].'</option>
+											';
+										}
+									echo'</select>
 									<h3>Valor</h3>
 									<input step="0.99" type="number" placeholder="Valor do produto" name="valor">
 									<h3>Descrição</h3>
 									<input type="text" placeholder="Descrição do produto" name="descricao">
 									<h3>Imagem</h3>
 									<input type="file" id="img" placeholder="Imagem" name="img">
-
-									
-
 									<button> Cadastrar </button>
 								</form>
 							</section>			
@@ -87,21 +94,33 @@
 					';
 
 				}elseif ($_GET['form'] == 'promo') {
+					include "../DAO/produtoDAO.php";
+
+					$sql = new ProdutoDAO;
+
 					echo '
 					<main class="servicos">
 						<article class="servico-2">
 							<section class="form-2">
 								<!-- Promoção -->
-								<form>
+								<form action="cadastrar_pdo.php" method="post">
 									<h3>Produto</h3>
-									<select>
-										<option value="1">Nome pro</option>
-									</select>
+									<select name="produtopromo">';
+
+										foreach ($sql->Consultar() as $key) {
+											echo "
+											
+											<option value='".$key['id']."'>".$key['id']." - ".$key['nome']."</option>
+
+											";
+										}
+										
+									echo '</select>
 									<h3>Porcentagem</h3>
 									<input class="input-2" type="number" placeholder="Porcentagem de desconto (não insira '."'%'".')" name="porcento">
 									<h3>Estado</h3>
-									<select>
-										<option>Ativa</option>
+									<select name="estado">
+										<option selected="">Ativa</option>
 										<option>Desativada</option>
 									</select>	
 									<button> Cadastrar </button>

@@ -27,7 +27,7 @@ class ProdutoDAO{
 	function Deletar(Produto $p){
 		$pdo = new Conexao;
 		$con = $pdo->Conectar();
-		$Deleta = $pdo->prepare("DELETE * FROM produto WHERE id = ?");
+		$Deleta = $con->prepare("DELETE FROM produto WHERE id = ?");
 		$Deleta->bindValue(1,$p->getId(),PDO::PARAM_INT);
 		$Deleta->execute();
 
@@ -54,6 +54,31 @@ class ProdutoDAO{
 		$con = $pdo->Conectar();
 
 		$Consulta=$con->prepare("SELECT * FROM produto");
+		$Consulta->execute();
+
+		$r = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+
+		return $r;
+	}
+
+	function ConsultaUnica(Produto $c){
+		$pdo = new Conexao;
+		$con = $pdo->Conectar();
+
+		$Consulta=$con->prepare("SELECT * FROM produto WHERE id = ?");
+		$Consulta->bindValue(1,$c->getId(),PDO::PARAM_INT);
+		$Consulta->execute();
+
+		$r = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+
+		return $r;
+	}
+
+	function ConsultarCats(){
+		$pdo = new Conexao;
+		$con = $pdo->Conectar();
+
+		$Consulta=$con->prepare("SELECT * FROM categoria");
 		$Consulta->execute();
 
 		$r = $Consulta->fetchAll(PDO::FETCH_ASSOC);

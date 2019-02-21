@@ -36,18 +36,42 @@
 
 			<!-- OPTION->SELECTED -->
 			<?php
-			if (isset($_GET['form']) && !$_GET['form'] == "") {
-				if ($_GET['form'] == 'cat') {
+			if (isset($_GET['form']) && !$_GET['form'] == "" && isset($_GET['id']) && !empty($_GET['id'])) {
+				if ($_GET['form'] == 'cat'){
 					echo '
 
 					<main class="servicos">
 						<article class="servico-2">
 							<section class="form-2">
 								<!-- Categoria -->
-								<form>
-									<h3>Nome</h3>
-									<input type="text" placeholder="Nome da categoria" name="nome">	
-									<button> Atualizar </button>
+								<form method="post" action="atualizar_pdo.php">
+									<h3>Nome</h3>';
+
+									include "../DAO/categoriaDAO.php";
+
+									$cat = new Categoria;
+									$catDAO = new CategoriaDAO;
+
+
+									$cat->setId($_GET['id']);
+
+									foreach ($catDAO->ConsultaUnica($cat) as $key) {
+										# code...
+
+										echo '
+
+										<input value="'.$key['nome'].'" type="text" placeholder="Nome da categoria" name="nome">
+										<input type="hidden" name="id" value="'.$key['id'].'">
+										<input type="hidden" name="form" value="'.$_GET['form'].'">
+
+										';
+									}
+
+
+										
+									
+
+									echo'<button> Atualizar </button>
 								</form>
 							</section>			
 						</article>
@@ -61,26 +85,55 @@
 						<article class="servico-2">
 							<section class="form-2">
 								<!-- Produtos -->
-								<form enctype="multipart/form-data">
+								<form method="post" action="atualizar_pdo.php" enctype="multipart/form-data">';
+
+								include "../DAO/produtoDAO.php";
+								
+
+
+								$pro = new Produto;
+								$proDAO = new ProdutoDAO;
+								
+
+								$pro->setId($_GET['id']);
+
+								foreach ($proDAO->ConsultaUnica($pro) as $key) {
+									echo '
+
 									<h3>Nome</h3>
-									<input type="text" placeholder="Nome do produto" name="nome">
+									<input value="'.$key['nome'].'" type="text" placeholder="Nome do produto" name="nome">
 									<h3>Categoria</h3>
 									<select name="categoria">
-										<option value="1">Nome cat</option>
-										<option value="1">Nome cat</option>
-										<option value="1">Nome cat</option>
-									</select>
+									'; foreach ($proDAO->ConsultarCats() as $k) {
+										if ($key['idcategoria'] == $k['id']) {
+											echo '<option selected="" value="'.$k['id'].'">'.$k['id'].' - '.$k['nome'].'</option>';
+										}else{
+											echo '<option value="'.$k['id'].'">'.$k['id'].' - '.$k['nome'].'</option>';
+										}
+									}
+
+
+										
+									echo'</select>
 									<h3>Valor</h3>
-									<input step="0.99" type="number" placeholder="Valor do produto" name="valor">
+									<input value="'.$key['valor'].'" step="0.99" type="number" placeholder="Valor do produto" name="valor">
 									<h3>Descrição</h3>
-									<input type="text" placeholder="Descrição do produto" name="descricao">
+									<input value="'.$key['descricao'].'" type="text" placeholder="Descrição do produto" name="descricao">
 									<h3>Imagem</h3>
-									<input type="file" id="img" placeholder="Imagem" name="img">
+									<input required="" type="file" id="img" placeholder="Imagem" name="img">
+									<input type="hidden" name="id" value="'.$key['id'].'">
+										<input type="hidden" name="form" value="'.$_GET['form'].'">
 	
 									
 
 									<button> Atualizar </button>
-								</form>
+
+									';
+								}
+
+
+									
+								echo '</form>
 							</section>			
 						</article>
 					</main>
@@ -92,20 +145,53 @@
 						<article class="servico-2">
 							<section class="form-2">
 								<!-- Promoção -->
-								<form>
-									<h3>Produto</h3>
-									<select>
-										<option value="1">Nome pro</option>
-									</select>
+								<form method="post" action="atualizar_pdo.php">';
+									
+									include "../DAO/promocaoDAO.php";
+
+									$pro = new Promocao;
+									$proDAO = new PromocaoDAO;
+
+									$pro->setId($_GET['id']);
+
+									foreach ($proDAO->ConsultaUnica($pro) as $key) {
+										# code...
+										echo '
+
+										<h3>Produto</h3>
+									<select name="produto">';
+										foreach ($proDAO->ConsultarPros() as $k) {
+											if ($key['idproduto'] == $k['id']) {
+												echo '<option selected value="'.$k['id'].'">'.$k['id'].' - '.$k['nome'].'</option>';
+											}else{
+												echo '<option value="'.$k['id'].'">'.$k['id'].' - '.$k['nome'].'</option>';
+											}
+										}
+										
+									echo'</select>
 									<h3>Porcentagem</h3>
-									<input class="input-2" type="number" placeholder="Porcentagem de desconto (não insira '."'%'".')" name="porcento">
+									<input value="'.$key['porcentagem'].'" class="input-2" type="number" placeholder="Porcentagem de desconto (não insira '."'%'".')" name="porcento">
 									<h3>Estado</h3>
-									<select>
-										<option>Ativa</option>
-										<option>Desativada</option>
-									</select>	
+									<select name="estado">';
+									if ($key['ativa'] == "Ativa") {
+										echo "<option selected>Ativa</option>
+										<option>Desativada</option>";
+									}else{
+											echo "<option>Ativa</option>
+										<option selected>Desativada</option>";
+									}
+										
+									echo'</select>
+									<input type="hidden" name="id" value="'.$key['id'].'">
+										<input type="hidden" name="form" value="'.$_GET['form'].'">	
 									<button> Atualizar </button>
-								</form>
+
+										';
+									}
+
+
+									
+						echo'		</form>
 							</section>			
 						</article>
 					</main>

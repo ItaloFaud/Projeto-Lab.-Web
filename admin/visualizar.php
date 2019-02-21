@@ -33,6 +33,7 @@
 				</div>
 			</div>
 			<!-- MATÉRIAS -->
+			<!-- Guilherme e epifânio -->
 			<?php 
 			if (isset($_GET['form']) && !$_GET['form'] == "") {
 				if ($_GET['form'] == 'cat') {
@@ -91,7 +92,6 @@
 											<th>#</th>
 											<th>Nome</th>
 											<th>Cat.</th>
-											<th>Img</th>
 											<th>Valor</th>
 											<th>Ações</th>						
 										</tr>
@@ -107,7 +107,6 @@
 											<td>'.$key['id'].'</td>
 											<td>'.$key['nome'].'</td>
 											<td>'.$key['idcategoria'].'</td>
-											<td>'.$key['img'].'</td>
 											<td>'.$key['valor'].'</td>
 											<td><a href="atualizar.php?id='.$key['id'].'&form='.$_GET['form'].'">Atualizar</a> || <a href="deletar.php?id='.$key['id'].'&form='.$_GET['form'].'">Deletar</a></td>
 										</tr>

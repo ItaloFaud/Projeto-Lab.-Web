@@ -23,8 +23,10 @@ class CategoriaDAO{
 	function Deletar(Categoria $c){
 		$pdo = new Conexao;
 		$con = $pdo->Conectar();
-		$Deleta = $pdo->prepare("DELETE * FROM categoria WHERE id = ?");
+
+		$Deleta = $con->prepare("DELETE FROM categoria WHERE id = ?");
 		$Deleta->bindValue(1,$c->getId(),PDO::PARAM_INT);
+
 		$Deleta->execute();
 
 		return $Deleta->rowCount();
@@ -52,6 +54,21 @@ class CategoriaDAO{
 
 		return $r;
 	}
+
+	function ConsultaUnica(Categoria $c){
+		$pdo = new Conexao;
+		$con = $pdo->Conectar();
+
+		$Consulta=$con->prepare("SELECT * FROM categoria WHERE id = ?");
+		$Consulta->bindValue(1,$c->getId(),PDO::PARAM_INT);
+		$Consulta->execute();
+
+		$r = $Consulta->fetchAll(PDO::FETCH_ASSOC);
+
+		return $r;
+	}
+
+	
 }
 
 ?>
