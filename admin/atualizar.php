@@ -19,72 +19,115 @@
 			<div class="banner">
 				<div class="title title-full">
 					<h2><i>Pet's Life &copy</i></h2>
-					<h3>Atualização de --Nome aqui--</h3>
+					<h3>Atualização de <?php
+						if ($_GET['form'] == 'cat') {
+							echo "Categorias";
+						}elseif ($_GET['form'] == 'produ') {
+							# code...
+							echo "Produtos";
+						}else if ($_GET['form'] == 'promo') {
+							# code...
+							echo "Promoções";
+						}
+					?></h3>
 				</div>
 			</div>
 			<!-- MATÉRIAS -->
-			<main class="servicos">
-				<article class="servico-2">
-					<section class="form-2">
-						<!-- Produtos -->
-						<form enctype="multipart/form-data">
-							<h3>Nome</h3>
-							<input type="text" placeholder="Nome do produto" name="nome">
-							<h3>Categoria</h3>
-							<select name="categoria">
-								<option value="1">Nome cat</option>
-								<option value="1">Nome cat</option>
-								<option value="1">Nome cat</option>
-							</select>
-							<h3>Valor</h3>
-							<input step="0.99" type="number" placeholder="Valor do produto" name="valor">
-							<h3>Descrição</h3>
-							<input type="text" placeholder="Descrição do produto" name="descricao">
-							<h3>Imagem</h3>
-							<input type="file" id="img" placeholder="Imagem" name="img">
 
-							<!-- move_uploaded_file($_FILES['foto1']['tmp_name'], "imgs/".$_FILES['foto1']['name']); -->
+			<!-- OPTION->SELECTED -->
+			<?php
+			if (isset($_GET['form']) && !$_GET['form'] == "") {
+				if ($_GET['form'] == 'cat') {
+					echo '
 
-							<button> Cadastrar </button>
-						</form>
-					</section>			
-				</article>
-			</main>
+					<main class="servicos">
+						<article class="servico-2">
+							<section class="form-2">
+								<!-- Categoria -->
+								<form>
+									<h3>Nome</h3>
+									<input type="text" placeholder="Nome da categoria" name="nome">	
+									<button> Atualizar </button>
+								</form>
+							</section>			
+						</article>
+					</main>
+					';
 
-			<main class="servicos">
-				<article class="servico-2">
-					<section class="form-2">
-						<!-- Categoria -->
-						<form>
-							<h3>Nome</h3>
-							<input type="text" placeholder="Nome da categoria" name="nome">	
-							<button> Cadastrar </button>
-						</form>
-					</section>			
-				</article>
-			</main>
+				}elseif ($_GET['form'] == 'produ') {
+					echo '
 
-			<main class="servicos">
-				<article class="servico-2">
-					<section class="form-2">
-						<!-- Promoção -->
-						<form>
-							<h3>Produto</h3>
-							<select>
-								<option value="1">Nome pro</option>
-							</select>
-							<h3>Porcentagem</h3>
-							<input class="input-2" type="number" placeholder="Porcentagem de desconto (não insira '%')" name="porcento">
-							<h3>Estado</h3>
-							<select>
-								<option>Ativa</option>
-								<option>Desativada</option>
-							</select>	
-							<button> Cadastrar </button>
-						</form>
-					</section>			
-				</article>
-			</main>
+					<main class="servicos">
+						<article class="servico-2">
+							<section class="form-2">
+								<!-- Produtos -->
+								<form enctype="multipart/form-data">
+									<h3>Nome</h3>
+									<input type="text" placeholder="Nome do produto" name="nome">
+									<h3>Categoria</h3>
+									<select name="categoria">
+										<option value="1">Nome cat</option>
+										<option value="1">Nome cat</option>
+										<option value="1">Nome cat</option>
+									</select>
+									<h3>Valor</h3>
+									<input step="0.99" type="number" placeholder="Valor do produto" name="valor">
+									<h3>Descrição</h3>
+									<input type="text" placeholder="Descrição do produto" name="descricao">
+									<h3>Imagem</h3>
+									<input type="file" id="img" placeholder="Imagem" name="img">
+	
+									
+
+									<button> Atualizar </button>
+								</form>
+							</section>			
+						</article>
+					</main>
+					';
+
+				}elseif ($_GET['form'] == 'promo') {
+					echo '
+					<main class="servicos">
+						<article class="servico-2">
+							<section class="form-2">
+								<!-- Promoção -->
+								<form>
+									<h3>Produto</h3>
+									<select>
+										<option value="1">Nome pro</option>
+									</select>
+									<h3>Porcentagem</h3>
+									<input class="input-2" type="number" placeholder="Porcentagem de desconto (não insira '."'%'".')" name="porcento">
+									<h3>Estado</h3>
+									<select>
+										<option>Ativa</option>
+										<option>Desativada</option>
+									</select>	
+									<button> Atualizar </button>
+								</form>
+							</section>			
+						</article>
+					</main>
+
+					';
+
+				}else{
+					echo '
+				<script type="text/javascript">
+					alert("Valor inválido");
+					location.href = "index.php";
+				</script>';
+				}
+			}else{
+				echo '
+				<script type="text/javascript">
+					alert("Volte a página inicial");
+					location.href = "index.php";
+				</script>';
+			}
+
+			?>
 
 			<!-- FORMULÁRIO -->
 			

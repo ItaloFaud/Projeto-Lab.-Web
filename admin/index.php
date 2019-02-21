@@ -21,6 +21,36 @@
 					<h3>O melhor lugar para o seu amigo.</h3>
 				</div>
 			</div>
+			<script type="text/javascript">
+				function VisuCat(){
+					location.href = "visualizar.php?form=cat";
+				}
+
+				function VisuProdu(){
+					location.href = "visualizar.php?form=produ";
+				}
+
+				function VisuPromo(){
+					location.href = "visualizar.php?form=promo";
+				}
+
+			</script>
+
+			<script type="text/javascript">
+					function CadCat(){
+						location.href = "cadastrar.php?form=cat";
+					}
+
+					function CadProdu(){
+						location.href = "cadastrar.php?form=produ";
+					}
+
+					function CadPromo(){
+						location.href = "cadastrar.php?form=promo";
+					}
+				</script>
+
+
 			<!-- MATÉRIAS -->
 			<main class="servicos">
 				<article class="servico">
@@ -28,42 +58,74 @@
 						<a href="#">Visualizar</a>
 						<h4>Pet's Life &copy</h4>
 						<div class="buttons-2">
-							<button class="btn-2 btn-cadastrar-2">Categorias</button>
-							<button class="btn-2 btn-cadastrar-2">Produtos/Serviços</button>
-							<button class="btn-2 btn-cadastrar-2">Promoções</button>
+							<button onclick="VisuCat()" class="btn-2 btn-cadastrar-2">Categorias</button>
+							<button onclick="VisuProdu()" class="btn-2 btn-cadastrar-2">Produtos/Serviços</button>
+							<button onclick="VisuPromo()" class="btn-2 btn-cadastrar-2">Promoções</button>
 						</div>
 					</div>
 				</article>
+				
+
 				<article class="servico">
 					<div class="inner">
 						<a href="#">Cadastrar</a>
 						<h4>Pet's Life &copy</h4>
 						<div class="buttons-2">
-							<button class="btn-2 btn-cadastrar-2">Categorias</button>
-							<button class="btn-2 btn-cadastrar-2">Produtos/Serviços</button>
-							<button class="btn-2 btn-cadastrar-2">Promoções</button>
+							<button onclick="CadCat()" class="btn-2 btn-cadastrar-2">Categorias</button>
+							<button onclick="CadProdu()" class="btn-2 btn-cadastrar-2">Produtos/Serviços</button>
+							<button onclick="CadPromo()" class="btn-2 btn-cadastrar-2">Promoções</button>
 						</div>
 					</div>
 				</article>
+				<!-- <script type="text/javascript">
+					function Edi(){
+						location.href = "editar.php";
+					}
+
+					function Edi(){
+						location.href = "editar.php";
+					}
+
+					function Edi(){
+						location.href = "editar.php";
+					}
+				</script> -->
 				<article class="servico">
 					<div class="inner">
 						<a href="#">Editar</a>
 						<h4>Pet's Life &copy</h4>
 						<div class="buttons-2">
-							<button class="btn-2 btn-cadastrar-2">Categorias</button>
-							<button class="btn-2 btn-cadastrar-2">Produtos/Serviços</button>
-							<button class="btn-2 btn-cadastrar-2">Promoções</button>
+							<button onclick="VisuCat()" class="btn-2 btn-cadastrar-2">Categorias</button>
+							<button onclick="VisuProdu()" class="btn-2 btn-cadastrar-2">Produtos/Serviços</button>
+							<button onclick="VisuPromo()" class="btn-2 btn-cadastrar-2">Promoções</button>
 						</div>
 					</div>
 				</article>
+				<!-- <script type="text/javascript">
+					function Del(){
+						location.href = "deletar.php";
+					}
+
+					function Del(){
+						location.href = "deletar.php";
+					}
+
+					function Del(){
+						location.href = "deletar.php";
+					}
+
+					function Del(){
+						location.href = "deletar.php";
+					}
+				</script> -->
 				<article class="servico">
 					<div class="inner">
 						<a href="#">Excluir</a>
 						<h4>Pet's Life &copy</h4>
 						<div class="buttons-2">
-							<button class="btn-2 btn-cadastrar-2">Categorias</button>
-							<button class="btn-2 btn-cadastrar-2">Produtos/Serviços</button>
-							<button class="btn-2 btn-cadastrar-2">Promoções</button>
+							<button onclick="VisuCat()" class="btn-2 btn-cadastrar-2">Categorias</button>
+							<button onclick="VisuProdu()" class="btn-2 btn-cadastrar-2">Produtos/Serviços</button>
+							<button onclick="VisuPromo()" class="btn-2 btn-cadastrar-2">Promoções</button>
 						</div>
 					</div>
 				</article>

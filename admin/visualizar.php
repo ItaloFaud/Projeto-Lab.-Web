@@ -17,131 +17,191 @@
 			<div class="banner">
 				<div class="title title-full">
 					<h2><i>Pet's Life &copy</i></h2>
-					<h3>Visualizar --Nome aqui--</h3>
+					<h3>Visualizar 
+					<?php
+						if ($_GET['form'] == 'cat') {
+							echo "Categorias";
+						}elseif ($_GET['form'] == 'produ') {
+							# code...
+							echo "Produtos";
+						}else if ($_GET['form'] == 'promo') {
+							# code...
+							echo "Promoções";
+						}
+					?>
+					</h3>
 				</div>
 			</div>
 			<!-- MATÉRIAS -->
-			<main class="servicos">
-				<article class="servico-3">
-					<section class="form-3">
-						<table class="table">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>Nome</th>
-									<th>Cat.</th>
-									<th>QTN.</th>
-									<th>Valor</th>
-									<th>Ações</th>						
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1</td>
-									<td>Cachorro</td>
-									<td>Animais</td>
-									<td>3</td>
-									<td>200.00</td>
-									<td><a href="atualizar.php">Atualizar</a> || <a href="atualizar.php">Deletar</a></td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>Cachorro</td>
-									<td>Animais</td>
-									<td>3</td>
-									<td>200.00</td>
-									<td><a href="atualizar.php">Atualizar</a> || <a href="atualizar.php">Deletar</a></td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>Cachorro</td>
-									<td>Animais</td>
-									<td>3</td>
-									<td>200.00</td>
-									<td><a href="atualizar.php">Atualizar</a> || <a href="atualizar.php">Deletar</a></td>
-								</tr>
-							</tbody>
-						</table>
-						
-					</section>			
-				</article>
-			</main>
+			<?php 
+			if (isset($_GET['form']) && !$_GET['form'] == "") {
+				if ($_GET['form'] == 'cat') {
+					# code...
+					include "../DAO/categoriaDAO.php";
+					echo '
+					<main class="servicos">
+						<article class="servico-3">
+							<section class="form-3">
+								<!-- Categorias -->
+								<table class="table">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Nome</th>
+											<th>Ações</th>					
+										</tr>
+									</thead>
+									<tbody>';
 
-			<main class="servicos">
-				<article class="servico-3">
-					<section class="form-3">
-						<table class="table">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>Nome</th>
-									<th>Ações</th>					
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1</td>
-									<td>Animais</td>
-									<td><a href="atualizar.php">Atualizar</a> || <a href="atualizar.php">Deletar</a></td>						
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>Animais</td>
-									<td><a href="atualizar.php">Atualizar</a> || <a href="atualizar.php">Deletar</a></td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>Animais</td>
-									<td><a href="atualizar.php">Atualizar</a> || <a href="atualizar.php">Deletar</a></td>
-								</tr>
-							</tbody>
-						</table>
-						
-					</section>			
-				</article>
-			</main>
+								$CatDAO = new CategoriaDAO;
 
-			<main class="servicos">
-				<article class="servico-3">
-					<section class="form-3">
-						<table class="table">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>Produto</th>
-									<th>%</th>
-									<th>Ativa</th>
-									<th>Ações</th>						
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1</td>
-									<td>Cachorro</td>
-									<td>3</td>
-									<td>Sim</td>
-									<td><a href="atualizar.php">Atualizar</a> || <a href="atualizar.php">Deletar</a></td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>Cachorro</td>
-									<td>3</td>
-									<td>Sim</td>
-									<td><a href="atualizar.php">Atualizar</a> || <a href="atualizar.php">Deletar</a></td>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>Cachorro</td>
-									<td>3</td>
-									<td>Sim</td>
-									<td><a href="atualizar.php">Atualizar</a> || <a href="atualizar.php">Deletar</a></td>
-								</tr>
-							</tbody>
-						</table>
-						
-					</section>			
-				</article>
-			</main>
+								foreach ($CatDAO->Consultar() as $key) {
+									echo '
+										<tr>
+											<td>'.$key['id'].'</td>
+											<td>'.$key['nome'].'</td>
+											<td><a href="atualizar.php?id='.$key['id'].'&form='.$_GET['form'].'">Atualizar</a> || <a href="deletar.php?id='.$key['id'].'&form='.$_GET['form'].'">Deletar</a></td>						
+										</tr>
+									';
+								}
+
+
+
+										
+								echo '</tbody>
+								</table>
+								
+							</section>			
+						</article>
+					</main>
+					';
+
+				}elseif ($_GET['form'] == 'produ') {
+					# code...]
+					include "../DAO/produtoDAO.php";
+					echo '
+					
+					<main class="servicos">
+						<article class="servico-3">
+							<section class="form-3">
+								<!-- PRODUTO -->
+								<table class="table">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Nome</th>
+											<th>Cat.</th>
+											<th>Img</th>
+											<th>Valor</th>
+											<th>Ações</th>						
+										</tr>
+									</thead>
+									<tbody>';
+
+									$sql = new ProdutoDAO;
+
+									foreach ($sql->Consultar() as $key ) {
+										echo '
+
+										<tr>
+											<td>'.$key['id'].'</td>
+											<td>'.$key['nome'].'</td>
+											<td>'.$key['idcategoria'].'</td>
+											<td>'.$key['img'].'</td>
+											<td>'.$key['valor'].'</td>
+											<td><a href="atualizar.php?id='.$key['id'].'&form='.$_GET['form'].'">Atualizar</a> || <a href="deletar.php?id='.$key['id'].'&form='.$_GET['form'].'">Deletar</a></td>
+										</tr>
+
+										';
+									}
+										
+								
+
+								echo'	</tbody>
+								</table>
+								
+							</section>			
+						</article>
+					</main>
+
+					';
+
+				}elseif ($_GET['form'] == 'promo') {
+					
+					echo '
+
+					<main class="servicos">
+						<article class="servico-3">
+							<section class="form-3">
+								<!-- Promoçoes -->
+								<table class="table">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Produto</th>
+											<th>%</th>
+											<th>Ativa</th>
+											<th>Ações</th>						
+										</tr>
+									</thead>
+									<tbody>';
+
+									include "../DAO/promocaoDAO.php";
+
+									$sql = new PromocaoDAO;
+
+									foreach ($sql->Consultar() as $key) {
+										# code...
+										echo '
+										
+										<tr>
+											<td>'.$key['id'].'</td>
+											<td>'.$key['idproduto'].'</td>
+											<td>'.$key['porcentagem'].'</td>
+											<td>'.$key['ativa'].'</td>
+											<td><a href="atualizar.php?id='.$key['id'].'&form='.$_GET['form'].'">Atualizar</a> || <a href="deletar.php?id='.$key['id'].'&form='.$_GET['form'].'">Deletar</a></td>
+										</tr>
+
+
+										';
+									}
+										
+
+
+										
+								
+								echo '</tbody>
+								</table>
+								
+							</section>			
+						</article>
+					</main>
+
+					';
+
+
+				}else{
+					echo '
+				<script type="text/javascript">
+					alert("Valor inválido");
+					location.href = "index.php";
+				</script>';
+				}
+			}else{
+				echo '
+				<script type="text/javascript">
+					alert("Volte a página inicial");
+					location.href = "index.php";
+				</script>';
+			}
+
+			?>
+
+			
+
+			
+
+			
 
 			<!-- FORMULÁRIO -->
 			
