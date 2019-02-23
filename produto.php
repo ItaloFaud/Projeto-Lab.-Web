@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,42 @@
 <body>
 	<div class="main">
 			<!-- MENU -->
-			<?php include "menu.php"; ?>
+			<?php include "DAO2/produtoDAO.php"; include "menu.php"; 
+
+			if (isset($_POST['idpro']) && !empty($_POST['idpro'])) {
+				if (isset($_SESSION['user'])) {
+
+					if (!isset($_SESSION['carrinho'])) {
+
+						$_SESSION['carrinho'] = array();
+
+					}
+							if(!isset($_SESSION['carrinho'][$_POST['idpro']])) {
+								
+								$_SESSION['carrinho'][$_POST['idpro']] = 1;
+								header('location: index.php');
+
+							}else{
+
+								$_SESSION['carrinho'][$_POST['idpro']] += 1;
+								header('location: index.php');
+
+							}
+
+						
+
+					}else{
+					echo '
+					<script type="text/javascript">
+						alert("Você tem que ter uma conta para adicionar um produto ao seu carrinho");
+						location.href = "cadastro.php";	
+					</script>';
+					}
+					
+				}
+			
+
+			?>
 			<!-- BANNER -->
 			<div class="banner">
 				<div class="title title-full">
@@ -29,39 +65,79 @@
 			
 				
 			<main class="servicos">
-				<!-- <article class="servico">
-					<a href="#"><img src="scorpion-2880x1800-mortal-kombat-x-pc-games-xbox-one-ps4-24.jpg" alt="Sobre"></a>
-					<div class="inner">
-						<a href="#">Novo Lançamento Netherealm</a>
-						<h4>O mais novo game da Netherealm promete ser um sucesso de vendas</h4>
-						<p>O novo Mortal Kombat 11 da Netherealm está em fase final de desenvolvimento e os beta testers já tem uma ótima avaliação do game.</p>
-					</div>
-				</article> -->
 
-				<article class="servico">
-					<a href="#"><img src="imgs/Darth_Vader_TFU.jpg" alt="Sobre"></a>
+				<?php
+
+				
+
+				if (isset($_GET['id']) && !empty($_GET['id'])) {
+					# code...
+					
+					
+
+					$pro = new Produto;
+					$proDAO = new ProdutoDAO;
+
+					$pro->setId($_GET['id']);
+
+					foreach ($proDAO->ConsultaUnica($pro) as $key) {
+						# code...
+						echo '<article class="servico">
+					<a href="#"><img src="imgs/'.$key['img'].'" alt="Sobre"></a>
 					<div class="inner">
 						
-						<h4>Peixe Dourado</h4>
+						<h4>'.$key['nome'].'</h4>
 					</div>
 				</article>
 
 				<article class="servico">				
 					<div class="inner">
-						<a href="#">Peixe Dourado</a>
-						<h4>R$: 9.88</h4>
-						<p>Descrição:</p>
-						<p>Categoria:</p>
-					</div>
+						<a href="#">'.$key['nome'].'</a>
+						';
+
+						foreach ($proDAO->ConsultaPromo($key['id']) as $promo) {
+							# code...
+							if ($promo && $promo['ativa'] == "Ativa") {
+								$preco = $key['valor'] - $key['valor']*($promo['porcentagem']/100);
+
+								echo '<h4><strike>R$: '.$key['valor'].'</strike>   R$: '.$preco.'</h4>';
+							}else{
+								echo '<h4>R$: '.$key['valor'].'</h4>'; 
+							}
+						}
+						
+
+
+
+						echo '
+						<p>Descrição: '.$key['descricao'].'</p>';
+
+						foreach ($proDAO->ConsultarCats() as $k) {
+							if ($key['idcategoria'] == $k['id']) {
+								echo '<p>Categoria: '.$k['nome'].'</p>';
+							}else{
+								echo "";
+							}
+						}
+
+						
+					echo '</div>
 					<article class="servico-2">
 					<section class="form-4">
-						<form><!-- INPUT HIDDEN -->
-							<input type="hidden" name="">
+						<form method="post"><!-- INPUT HIDDEN -->
+							<input type="hidden" value="'.$key['id'].'" name="idpro">
 							<button>Adicionar ao carrinho <i class="fas fa-shopping-cart"></i></button>
 						</form>
 					</section>			
 				</article>
-				</article>
+				</article>';
+					}
+				}
+
+
+				?>
+
+				
 			</main>
 
 

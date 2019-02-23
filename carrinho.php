@@ -1,3 +1,9 @@
+<?php
+
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +16,27 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 
+<!-- Ver como retirar posicao do carrinho -->
+
+
 <body>
 	<div class="main">
 			<!-- MENU -->
-			<?php include "menu.php"; ?>
+			<?php include "DAO2/produtoDAO.php"; include "menu.php";
+			//session_destroy();
+
+				if(isset($_GET['acao']) && $_GET['acao'] == "retirar"){
+					if(isset($_GET['id'])) {
+									
+					$_SESSION['carrinho'][$_GET['id']] -= 1;
+						//unset($_SESSION['carrinho'][$_GET['id']]);
+				
+					}else{
+
+					}	
+				}
+
+			?>
 			<!-- BANNER -->
 			<div class="banner">
 				<div class="title">
@@ -52,27 +75,105 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>
-										<center>
-										<div class="cart-img">
-											<img src="imgs/Darth_Vader_TFU.jpg">
-										</div>
-										</center>
-										<a href="atualizar.php">Retirar do carrinho</a>
-									</td>
-									<td>Cachorro</td>
-									<td>2</td>
-									<td>100.00</td>
-									<td>200.00</td>
-								</tr>
+								<?php
+								$proTotal = 0;
+								$total = 0;
+									
+
+									if (isset($_SESSION['carrinho'])) {
+									foreach ($_SESSION['carrinho'] as $id => $qtn){
+									
+									if ($qtn <> 0 && $qtn > 0) {
+										# code...
+										$pro = new Produto;
+									$proDAO = new ProdutoDAO;
+
+									$pro->setId($id);
+
+									
+
+										foreach ($proDAO->ConsultaUnica($pro) as $retorno){
+											# code...
+											foreach ($proDAO->ConsultaPromo($id) as $promo) {
+												# code...
+												if ($promo && $promo['ativa'] == "Ativa") {
+												# code...
+													$valor = $retorno['valor']*($promo['porcentagem']/100);
+													$provalor = ($retorno['valor']-$valor);
+													
+													$proTotal = ($retorno['valor']-$valor)*$qtn;
+
+													echo '
+												<tr>
+											<td>
+												<center>
+												<div class="cart-img">
+													<img src="imgs/'.$retorno['img'].'">
+												</div>
+												</center>
+												<a href="?acao=retirar&id='.$id.'">Retirar do carrinho</a>
+											</td>
+											<td>'.$retorno['nome'].'</td>
+											<td>'.$qtn.'</td>
+											<td>'.$provalor.'</td>
+											<td>'.$proTotal.'</td>
+												</tr>
+
+											';
+
+
+												}else{
+												$proTotal = $retorno['valor']*$qtn;
+
+												echo '
+												<tr>
+											<td>
+												<center>
+												<div class="cart-img">
+													<img src="imgs/'.$retorno['img'].'">
+												</div>
+												</center>
+												<a href="?acao=retirar&id='.$id.'">Retirar do carrinho</a>
+											</td>
+											<td>'.$retorno['nome'].'</td>
+											<td>'.$qtn.'</td>
+											<td>'.$retorno['valor'].'</td>
+											<td>'.$proTotal.'</td>
+												</tr>
+
+											';
+											}
+											}
+											
+											
+										}
+
+										$total += $proTotal;
+									}
+									
+
+					
+
+									}
+								}else{
+									echo "<h2>Não tem nenhum produto em seu carrinho</h2>";
+								}
+
+								
+
+
+								?>
+								
 							</tbody>
 						</table>
 						
 
 						<div class="buttons">
-							<p class="copy-2">Total: R$ 200.00</p>
-							<button class="btn-2 btn-sobre"> Finalizar compra <i class="fa fa-arrow-circle-right"></i></button>	
+							<p class="copy-2">Total: R$ <?php echo $total; ?></p>
+							<form action="detalhes.php" method="post">
+							<input type="hidden" value="<?php echo $total;?>" name="total">
+							<button class="btn-2 btn-sobre"> Finalizar compra <i class="fa fa-arrow-circle-right"></i></button>
+							</form>	
 						</div>
 						<p class="copy-2">*Não oferecemos serviço de entrega<br>*Você deve retirar seu pedido em nossa loja com o comprovante de pagamento</p>
 					</section>			

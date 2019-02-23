@@ -13,7 +13,7 @@
 <body>
 	<div class="main">
 			<!-- MENU -->
-			<?php include 'menu.php'; ?>
+			<?php include "DAO2/produtoDAO.php"; include 'menu.php'; ?>
 			<!-- BANNER -->
 			<div class="banner">
 				<div class="title">
@@ -37,22 +37,43 @@
 			</div>
 			<!-- MATÉRIAS -->
 			<main class="servicos">
-				<!-- <article class="servico">
-					<a href="#"><img src="scorpion-2880x1800-mortal-kombat-x-pc-games-xbox-one-ps4-24.jpg" alt="Sobre"></a>
-					<div class="inner">
-						<a href="#">Novo Lançamento Netherealm</a>
-						<h4>O mais novo game da Netherealm promete ser um sucesso de vendas</h4>
-						<p>O novo Mortal Kombat 11 da Netherealm está em fase final de desenvolvimento e os beta testers já tem uma ótima avaliação do game.</p>
-					</div>
-				</article> -->
+				
+				<?php 
+				
 
-				<article class="servico">
-					<a href="#"><img src="imgs/Darth_Vader_TFU.jpg" alt="Sobre"></a>
-					<div class="inner">
-						<a href="produto.php">Peixe Dourado</a>
-						<h4>R$: 9.88</h4>
-					</div>
-				</article>
+				$proDAO = new ProdutoDAO;
+
+				if (isset($_GET['cat']) && !empty($_GET['cat'])) {
+						foreach ($proDAO->ConsultaCat($_GET['cat']) as $key) {
+									# code...
+							echo '<article class="servico">
+						<a href="produto.php?id='.$key['id'].'"><img src="imgs/'.$key['img'].'" alt="Sobre"></a>
+						<div class="inner">
+							<a href="produto.php?id='.$key['id'].'">'.$key['nome'].'</a>
+							<h4>R$: '.$key['valor'].'</h4>
+						</div>
+					</article>';
+
+
+						}		
+				}else{
+					foreach ($proDAO->Consultar() as $key){
+						echo '<article class="servico">
+						<a href="produto.php?id='.$key['id'].'"><img src="imgs/'.$key['img'].'" alt="Sobre"></a>
+						<div class="inner">
+							<a href="produto.php?id='.$key['id'].'">'.$key['nome'].'</a>
+							<h4>R$: '.$key['valor'].'</h4>
+						</div>
+					</article>';
+					}
+				}
+
+				
+
+				?>
+				
+
+
 			</main>
 
 			<!-- FORMULÁRIO -->

@@ -47,7 +47,22 @@ session_start();
 					<nav class="categoria">
 						<a class="btn-close-cat" href="#"><i class="fa fa-times "></i></a>
 						<ul>
-							<li><a href="#">Animais</a></li>					
+						<?php
+
+							include "DAO2/categoriaDAO.php";
+
+							$catDAO = new CategoriaDAO;
+
+							
+							echo "<li><a href='index.php'>Todas as categorias</a></li>";
+							foreach ($catDAO->Consultar() as $key ) {
+								# code...
+
+								echo '<li><a href="index.php?cat='.$key['id'].'">'.$key['nome'].'</a></li>';
+							}
+
+						?>
+											
 						</ul>
 					</nav>
 			</header>

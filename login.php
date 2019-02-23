@@ -22,6 +22,7 @@ if (isset($_SESSION['user'])) {
 				# code...
 				foreach ($ContatoDAO->Logar($Contato) as $key) {	
 					$_SESSION['user'] = $key['nome'];
+					$_SESSION['user_id'] = $key['id'];
 					echo '
 						<script type="text/javascript">
 							alert("Logado!");

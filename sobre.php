@@ -14,7 +14,7 @@
 <body>
 	<div class="main">
 			<!-- MENU -->
-			<?php include "menu.php"; ?>
+			<?php include "DAO2/produtoDAO.php"; include "menu.php"; ?>
 			<!-- BANNER -->
 			<div class="banner">
 				<div class="title">
@@ -38,15 +38,7 @@
 			</div>
 			<!-- MATÉRIAS -->
 			<main class="servicos">
-				<!-- <article class="servico">
-					<a href="#"><img src="scorpion-2880x1800-mortal-kombat-x-pc-games-xbox-one-ps4-24.jpg" alt="Sobre"></a>
-					<div class="inner">
-						<a href="#">Novo Lançamento Netherealm</a>
-						<h4>O mais novo game da Netherealm promete ser um sucesso de vendas</h4>
-						<p>O novo Mortal Kombat 11 da Netherealm está em fase final de desenvolvimento e os beta testers já tem uma ótima avaliação do game.</p>
-					</div>
-				</article> -->
-
+				
 				
 				<article class="servico">			
 					<div class="inner">
@@ -82,9 +74,18 @@
 				</article>
 
 				<article class="servico">
-					<a href="#"><img src="imgs/Darth_Vader_TFU.jpg" alt="Sobre"></a>
-					<div class="inner">						
-						<h4>R$: 9.88</h4>
+					<div class="inner">
+						<a href="#">Endereço Loja</a>
+						<h4>Pet's Life &copy</h4>
+						<p>
+							CEP: 63460-000<br>
+							Estado: Ceará<br>
+							Cidade: Pereiro<br>
+							Rua: Santos Dummont<br>
+							Número: 120<br>
+							Referências: EEEM Virgílio Correia Lima, Cemitério antigo.
+						</p>
+
 					</div>
 				</article>
 

@@ -1,3 +1,18 @@
+<?php
+
+if (!isset($_POST['total'])) {
+	echo '<script type="text/javascript">
+						alert("Compra não possui produtos");						
+						location.href = "index.php";	
+					</script>';
+}elseif ($_POST['total'] == 0) {
+	echo '<script type="text/javascript">
+						alert("Compra não possui produtos");						
+						location.href = "index.php";	
+					</script>';
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +28,7 @@
 <body>
 	<div class="main">
 			<!-- MENU -->
-			<?php include "menu.php"; ?>
+			<?php include "DAO2/usuarioDAO.php"; include "menu.php"; ?>
 			<!-- BANNER -->
 			<div class="banner">
 				<div class="title">
@@ -58,13 +73,73 @@
 						<a href="#">Detalhes da compra</a>
 						<h4>Pet's Life &copy</h4>
 						<p>
-						Valor da compra: R$--val aqui--<br>
-						Cliente: ----<br>
-						Email: ----<br>
-						Telefone: ----<br>
+						<?php
+
+						
+
+						$usuDAO = new UsuarioDAO;
+
+						foreach ($usuDAO->Ver($_SESSION['user_id']) as $key){
+							echo "
+						Valor da compra: R$".$_POST['total']."<br>
+						Cliente: ".$key['nome']."<br>
+						Email: ".$key['email']."<br>
+						Telefone: ".$key['telefone']."<br>";
+						}
+						?>
+
+
+						
+						
 					</p>
 					</div>
+					<article class="servico-2">
+					<section class="form-4">
+						<form action="confirma_compra.php" method="post"><!-- INPUT HIDDEN -->
+							<input type="hidden" value="<?php echo $_POST['total']?>" name="total">
+							<button> Confirmar compra <i class="fas fa-shopping-cart"></i></button>
+						</form>
+					</section>			
 				</article>
+				</article>
+
+				<article class="servico">			
+					<div class="inner">
+						<a href="#">Produto, quantidade e preço</a>
+						<h4>Pet's Life &copy</h4>
+						<p>
+							<?php
+								foreach ($_SESSION['carrinho'] as $id => $qtn) {
+									if ($qtn <> 0 && $qtn > 0) {
+										$userDAO = new UsuarioDAO;
+
+										foreach ($userDAO->ConsultaUnica($id) as $key){
+											
+											foreach ($userDAO->ConsultaPromo($id) as $promo) {
+												# code...
+												if ($promo && $promo['ativa'] == "Ativa") {
+													$desconto = $key['valor']*($promo['porcentagem']/100);
+													$valorpro = $key['valor'] - $desconto;
+
+													echo $key['nome'].' ---- '.$qtn.'x'.$valorpro.' ---- R$'.$valorpro*$qtn.'<br>';
+
+
+												}else{
+													echo $key['nome'].' ---- '.$qtn.'x'.$key['valor'].' ---- R$'.$key['valor']*$qtn.'<br>';
+												}
+											}
+
+
+											
+										}
+									}
+								}
+
+							?>
+						</p>
+					</div>
+				</article>
+
 
 			</main>
 
