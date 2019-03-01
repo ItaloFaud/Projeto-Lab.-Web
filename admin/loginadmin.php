@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Testando SASS</title>
+	<title>Login Administrativo</title>
+	<link rel="shortcut icon" type="image/x-icon" href="../imgs/1293792.png">
 	<link rel="stylesheet" type="text/css" href="../CSS/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="../CSS/animate.css">

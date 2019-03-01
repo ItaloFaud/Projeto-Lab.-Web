@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Pet's Life</title>
+	<title>Pet's Life | Produto</title>
+	<link rel="shortcut icon" type="image/x-icon" href="imgs/1293792.png">
 
 	<link rel="stylesheet" type="text/css" href="CSS/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
@@ -100,9 +101,11 @@
 							if ($promo && $promo['ativa'] == "Ativa") {
 								$preco = $key['valor'] - $key['valor']*($promo['porcentagem']/100);
 
-								echo '<h4><strike>R$: '.$key['valor'].'</strike>   R$: '.$preco.'</h4>';
+
+								echo '<h4><strike>R$: '.number_format($key['valor'],2).'</strike>   R$: '.number_format($preco,2).'</h4>';
 							}else{
-								echo '<h4>R$: '.$key['valor'].'</h4>'; 
+								
+								echo '<h4>R$: '.number_format($key['valor'],2).'</h4>'; 
 							}
 						}
 						

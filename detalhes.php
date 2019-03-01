@@ -16,7 +16,8 @@ if (!isset($_POST['total'])) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Testando SASS</title>
+	<title>Pet's Life | Detalhes da compra</title>
+	<link rel="shortcut icon" type="image/x-icon" href="imgs/1293792.png">
 
 	<link rel="stylesheet" type="text/css" href="CSS/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
@@ -109,6 +110,7 @@ if (!isset($_POST['total'])) {
 						<h4>Pet's Life &copy</h4>
 						<p>
 							<?php
+							
 								foreach ($_SESSION['carrinho'] as $id => $qtn) {
 									if ($qtn <> 0 && $qtn > 0) {
 										$userDAO = new UsuarioDAO;

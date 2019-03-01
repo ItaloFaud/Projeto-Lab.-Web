@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Pet's Life</title>
+	<title>Pet's Life | Home</title>
+	<link rel="shortcut icon" type="image/x-icon" href="imgs/1293792.png">
 
 	<link rel="stylesheet" type="text/css" href="CSS/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
@@ -50,7 +51,7 @@
 						<a href="produto.php?id='.$key['id'].'"><img src="imgs/'.$key['img'].'" alt="Sobre"></a>
 						<div class="inner">
 							<a href="produto.php?id='.$key['id'].'">'.$key['nome'].'</a>
-							<h4>R$: '.$key['valor'].'</h4>
+							<h4>R$: '.number_format($key['valor'],2).'</h4>
 						</div>
 					</article>';
 
@@ -62,7 +63,7 @@
 						<a href="produto.php?id='.$key['id'].'"><img src="imgs/'.$key['img'].'" alt="Sobre"></a>
 						<div class="inner">
 							<a href="produto.php?id='.$key['id'].'">'.$key['nome'].'</a>
-							<h4>R$: '.$key['valor'].'</h4>
+							<h4>R$: '.number_format($key['valor'],2).'</h4>
 						</div>
 					</article>';
 					}
@@ -88,7 +89,7 @@
 					<a href="#"><i class="fab fa-instagram"></i></a>
 					<a href="#"><i class="fa fa-envelope"></i></a>
 				</div>
-				<p class="copy">Pet Shop Dog's Life &copy. Todos os direitos reservados</p>
+				<p class="copy">Pet Shop Pets's Life &copy. Todos os direitos reservados</p>
 			</footer>
 
 

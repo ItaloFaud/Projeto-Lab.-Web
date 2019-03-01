@@ -51,7 +51,7 @@
 			}else{
 				echo '
 					<script type="text/javascript">
-						alert("Não houve nenhuma ação");
+						alert("Há pedidos com esse produto");
 						location.href = "index.php";
 					</script>
 				';

@@ -7,7 +7,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Carrinho</title>
+	<title>Pet's Life | Carrinho</title>
+	<link rel="shortcut icon" type="image/x-icon" href="imgs/1293792.png">
 
 	<link rel="stylesheet" type="text/css" href="CSS/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">

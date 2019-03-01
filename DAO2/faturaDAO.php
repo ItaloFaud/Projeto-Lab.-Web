@@ -17,7 +17,7 @@ class FaturaDAO{
 
 		 $id = $con->lastInsertId();
 
-		echo $id;
+		//echo $id;
 
 		$p->setId($id);
 		

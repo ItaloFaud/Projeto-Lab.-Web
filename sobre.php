@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Testando SASS</title>
+	<title>Pet's Life | Sobre</title>
+	<link rel="shortcut icon" type="image/x-icon" href="imgs/1293792.png">
 
 	<link rel="stylesheet" type="text/css" href="CSS/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
@@ -67,13 +68,6 @@
 				</article>
 
 				<article class="servico">
-					<a href="#"><img src="imgs/Darth_Vader_TFU.jpg" alt="Sobre"></a>
-					<div class="inner">						
-						<h4>R$: 9.88</h4>
-					</div>
-				</article>
-
-				<article class="servico">
 					<div class="inner">
 						<a href="#">Endereço Loja</a>
 						<h4>Pet's Life &copy</h4>
@@ -90,34 +84,69 @@
 				</article>
 
 				<article class="servico">
-					<a href="#"><img src="imgs/Darth_Vader_TFU.jpg" alt="Sobre"></a>
+					<a href="#"><img src="imgs/IMG-20190226-WA0016.jpg" alt="Sobre"></a>
 					<div class="inner">						
-						<h4>R$: 9.88</h4>
+						<h4>Huskys siberianos</h4>
 					</div>
 				</article>
 
 				<article class="servico">
-					<a href="#"><img src="imgs/Darth_Vader_TFU.jpg" alt="Sobre"></a>
-					<div class="inner">
-						
-						<h4>R$: 9.88</h4>
+					<a href="#"><img src="imgs/IMG-20190226-WA0025.jpg" alt="Sobre"></a>
+					<div class="inner">						
+						<h4>Peixes colorido</h4>
 					</div>
 				</article>
 
 				<article class="servico">
-					<a href="#"><img src="imgs/Darth_Vader_TFU.jpg" alt="Sobre"></a>
+					<a href="#"><img src="imgs/IMG-20190226-WA0026.jpg" alt="Sobre"></a>
+					<div class="inner">						
+						<h4>Peixe beta branco com azul</h4>
+					</div>
+				</article>
+
+				<article class="servico">
+					<a href="#"><img src="imgs/IMG-20190226-WA0011.jpg" alt="Sobre"></a>
+					<div class="inner">						
+						<h4>Pit bull adulto</h4>
+					</div>
+				</article>
+
+				
+
+				
+
+				
+
+				<article class="servico">
+					<a href="#"><img src="imgs/IMG-20190226-WA0008.jpg" alt="Sobre"></a>
 						<div class="inner">
 						
-						<h4>R$: 9.88</h4>
+						<h4>Filhote de pit bull</h4>
 					</div>				
 				</article>
 
 				<article class="servico">
-					<a href="#"><img src="imgs/Darth_Vader_TFU.jpg" alt="Sobre"></a>
+					<a href="#"><img src="imgs/IMG-20190226-WA0014.jpg" alt="Sobre"></a>
 					<div class="inner">
-						<h4>Banho e tosa de Husky</h4>
+						<h4>filhote de pastor alemão com pedgree</h4>
 					</div>
 				</article>
+
+				<article class="servico">
+					<a href="#"><img src="imgs/IMG-20190226-WA0017.jpg" alt="Sobre"></a>
+					<div class="inner">
+						<h4>Filhote Husky</h4>
+					</div>
+				</article>
+
+				<article class="servico">
+					<a href="#"><img src="imgs/IMG-20190226-WA0019.jpg" alt="Sobre"></a>
+					<div class="inner">
+						<h4>Filhotes de gatos em geral</h4>
+					</div>
+				</article>
+
+				
 
 
 			</main>
