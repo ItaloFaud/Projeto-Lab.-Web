@@ -1,6 +1,7 @@
 <?php
 include "../DAO/adminDAO.php";
 session_start();
+error_reporting(0);
 if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['senha']) && !empty($_POST['senha'])) {
 	$Admin = new Admin;
 	$AdminDAO = new AdminDAO;

@@ -14,7 +14,7 @@
 <body>
 	<div class="main">
 			<!-- MENU -->
-			<?php include "DAO2/produtoDAO.php"; include 'menu.php'; ?>
+			<?php error_reporting(0); include "DAO2/produtoDAO.php"; include 'menu.php'; ?>
 			<!-- BANNER -->
 			<div class="banner">
 				<div class="title">

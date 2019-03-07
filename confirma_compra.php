@@ -1,6 +1,7 @@
 <?php
 //
 session_start();
+error_reporting(0);
 include "Classes/conexao.php";
 include "DAO2/faturaDAO.php";
 include "DAO2/pedidoDAO.php";

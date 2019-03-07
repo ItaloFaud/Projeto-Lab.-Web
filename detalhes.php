@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 if (!isset($_POST['total'])) {
 	echo '<script type="text/javascript">
 						alert("Compra não possui produtos");						

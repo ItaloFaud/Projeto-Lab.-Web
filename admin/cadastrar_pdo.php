@@ -2,7 +2,7 @@
 // pedim
 
 //Ver colunas q podem ser unicas
-
+error_reporting(0);
 if (isset($_POST['nomecat']) && !$_POST['nomecat'] == "") {
 	include "../DAO/categoriaDAO.php";
 

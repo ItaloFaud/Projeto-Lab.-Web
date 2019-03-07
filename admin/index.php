@@ -14,7 +14,7 @@
 <body>
 	<div class="main">
 			<!-- MENU -->
-			<?php include "menuadmin.php";?>
+			<?php error_reporting(0); include "menuadmin.php";?>
 			<!-- BANNER -->
 			<div class="banner">
 				<div class="title title-full">

@@ -9,7 +9,7 @@
 
 	echo md5("adminmaster");
 			
-			// $Contato->setEmail($_GET['email']);
+	error_reporting(0);		// $Contato->setEmail($_GET['email']);
 			// $Contato->setSenha($senha);
 
 			

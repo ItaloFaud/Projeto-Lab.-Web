@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 
 if (isset($_POST['form']) && !empty($_POST['form']) && isset($_POST['id']) && !empty($_POST['id'])) {
 	if ($_POST['form'] == 'cat' && isset($_POST['nome'])) {

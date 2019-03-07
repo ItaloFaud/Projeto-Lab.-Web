@@ -1,6 +1,7 @@
 
 
 <?php
+error_reporting(0);
 	
 	include "DAO/usuarioDAO.php";
 	session_start();

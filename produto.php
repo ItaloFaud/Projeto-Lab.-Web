@@ -15,7 +15,7 @@
 <body>
 	<div class="main">
 			<!-- MENU -->
-			<?php include "DAO2/produtoDAO.php"; include "menu.php"; 
+			<?php error_reporting(0); include "DAO2/produtoDAO.php"; include "menu.php"; 
 
 			if (isset($_POST['idpro']) && !empty($_POST['idpro'])) {
 				if (isset($_SESSION['user'])) {

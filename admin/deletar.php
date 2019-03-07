@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 
 	if (isset($_GET['form']) && !$_GET['form'] == "" && isset($_GET['id']) && !empty($_GET['id'])) {
 		if ($_GET['form'] == 'cat') {

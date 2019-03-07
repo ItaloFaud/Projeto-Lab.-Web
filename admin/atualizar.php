@@ -13,7 +13,7 @@
 <body>
 	<div class="main">
 			<!-- MENU -->
-			<?php include "menuadmin.php";?>
+			<?php error_reporting(0); include "menuadmin.php";?>
 					
 			</header>
 			<!-- BANNER -->
