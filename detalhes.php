@@ -82,7 +82,7 @@ if (!isset($_POST['total'])) {
 
 						foreach ($usuDAO->Ver($_SESSION['user_id']) as $key){
 							echo "
-						Valor da compra: R$".$_POST['total']."<br>
+						Valor da compra: R$".number_format($_POST['total'],2)."<br>
 						Cliente: ".$key['nome']."<br>
 						Email: ".$key['email']."<br>
 						Telefone: ".$key['telefone']."<br>";
@@ -123,11 +123,11 @@ if (!isset($_POST['total'])) {
 													$desconto = $key['valor']*($promo['porcentagem']/100);
 													$valorpro = $key['valor'] - $desconto;
 
-													echo $key['nome'].' ---- '.$qtn.'x'.$valorpro.' ---- R$'.$valorpro*$qtn.'<br>';
+													echo $key['nome'].' ---- '.$qtn.'x'.number_format($valorpro,2).' ---- R$'.number_format($valorpro*$qtn,2).'<br>';
 
 
 												}else{
-													echo $key['nome'].' ---- '.$qtn.'x'.$key['valor'].' ---- R$'.$key['valor']*$qtn.'<br>';
+													echo $key['nome'].' ---- '.$qtn.'x'.number_format($key['valor'],2).' ---- R$'.number_format($key['valor']*$qtn,2).'<br>';
 												}
 											}
 

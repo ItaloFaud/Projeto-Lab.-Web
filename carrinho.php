@@ -116,8 +116,8 @@ error_reporting(0);
 											</td>
 											<td>'.$retorno['nome'].'</td>
 											<td>'.$qtn.'</td>
-											<td>'.$provalor.'</td>
-											<td>'.$proTotal.'</td>
+											<td>'.number_format($provalor,2).'</td>
+											<td>'.number_format($proTotal,2).'</td>
 												</tr>
 
 											';
@@ -138,8 +138,8 @@ error_reporting(0);
 											</td>
 											<td>'.$retorno['nome'].'</td>
 											<td>'.$qtn.'</td>
-											<td>'.$retorno['valor'].'</td>
-											<td>'.$proTotal.'</td>
+											<td>'.number_format($retorno['valor'],2).'</td>
+											<td>'.number_format($proTotal,2).'</td>
 												</tr>
 
 											';
@@ -170,7 +170,7 @@ error_reporting(0);
 						
 
 						<div class="buttons">
-							<p class="copy-2">Total: R$ <?php echo $total; ?></p>
+							<p class="copy-2">Total: R$ <?php echo number_format($total,2); ?></p>
 							<form action="detalhes.php" method="post">
 							<input type="hidden" value="<?php echo $total;?>" name="total">
 							<button class="btn-2 btn-sobre"> Finalizar compra <i class="fa fa-arrow-circle-right"></i></button>
