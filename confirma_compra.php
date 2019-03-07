@@ -1,7 +1,7 @@
 <?php
 //
 session_start();
-error_reporting(0);
+//error_reporting(0);
 include "Classes/conexao.php";
 include "DAO2/faturaDAO.php";
 include "DAO2/pedidoDAO.php";
@@ -79,7 +79,7 @@ if (isset($_POST['total'])) {
 		$pdf->Cell(80);
 		$pdf->Cell(30,10,"Compras",1,0,'C');
 		$pdf->Header();
-		$pdf->Cell(15);
+		
 		$pdf->FancyTable($header,$_SESSION['carrinho']);
 		$pdf->Ln(20);
 		$pdf->Cell(105);

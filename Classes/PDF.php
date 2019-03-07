@@ -77,6 +77,7 @@ function FancyTable($header, $carrinho)
     $this->SetLineWidth(.3);
     $this->SetFont('','B');
     // Header
+    $this->Cell(15);
     $w = array(40, 35, 40, 45);
     for($i=0;$i<count($header);$i++)
         $this->Cell($w[$i],7,$header[$i],1,0,'C',true);
@@ -87,7 +88,7 @@ function FancyTable($header, $carrinho)
     $this->SetFont('');
     // Data
     $fill = false;
-    $this->Cell(15);
+    
     $userDAO = new UsuarioDAO;
     foreach ($carrinho as $id => $qtn) {
         if ($qtn <> 0 && $qtn > 0) {
@@ -96,7 +97,7 @@ function FancyTable($header, $carrinho)
                     if ($promo && $promo['ativa'] == "Ativa") {
                         $desconto = $row['valor']*($promo['porcentagem']/100);
                         $valorpro = $row['valor'] - $desconto;
-
+                        $this->Cell(15);
                         $this->Cell($w[0],6,$row['nome'],'LR',0,'L',$fill);
                         $this->Cell($w[1],6,$qtn,'LR',0,'L',$fill);
                         $this->Cell($w[2],6,number_format($valorpro,2),'LR',0,'R',$fill);
@@ -105,8 +106,8 @@ function FancyTable($header, $carrinho)
                         $fill = !$fill;
                     }else{
 
-                        $valorpro = $key['valor'];
-
+                        $valorpro = $row['valor'];
+                        $this->Cell(15);
                         $this->Cell($w[0],6,$row['nome'],'LR',0,'L',$fill);
                         $this->Cell($w[1],6,$qtn,'LR',0,'L',$fill);
                         $this->Cell($w[2],6,$valorpro,'LR',0,'R',$fill);
