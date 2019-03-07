@@ -53,6 +53,20 @@ function ImprovedTable($header, $data)
     $this->Cell(array_sum($w),0,'','T');
 }
 
+function Header()
+{
+    // Logo
+    $this->Image('imgs/1293792.png',10,6,30);
+    // Arial bold 15
+    $this->SetFont('Arial','B',15);
+    // Move to the right
+    $this->Cell(80);
+    // Title
+    //$this->Cell(30,10,"Pet's Life",1,0,'C');
+    // Line break
+    $this->Ln(20);
+}
+
 // Colored table
 function FancyTable($header, $carrinho)
 {
@@ -73,6 +87,7 @@ function FancyTable($header, $carrinho)
     $this->SetFont('');
     // Data
     $fill = false;
+    $this->Cell(15);
     $userDAO = new UsuarioDAO;
     foreach ($carrinho as $id => $qtn) {
         if ($qtn <> 0 && $qtn > 0) {
@@ -84,8 +99,8 @@ function FancyTable($header, $carrinho)
 
                         $this->Cell($w[0],6,$row['nome'],'LR',0,'L',$fill);
                         $this->Cell($w[1],6,$qtn,'LR',0,'L',$fill);
-                        $this->Cell($w[2],6,$valorpro,'LR',0,'R',$fill);
-                        $this->Cell($w[3],6,$valorpro*$qtn,'LR',0,'R',$fill);
+                        $this->Cell($w[2],6,number_format($valorpro,2),'LR',0,'R',$fill);
+                        $this->Cell($w[3],6,number_format($valorpro*$qtn,2),'LR',0,'R',$fill);
                         $this->Ln();
                         $fill = !$fill;
                     }else{
@@ -104,7 +119,7 @@ function FancyTable($header, $carrinho)
                 
             }
     }
-}
+}   $this->Cell(15);
     // Closing line
     $this->Cell(array_sum($w),0,'','T');
 }

@@ -72,8 +72,17 @@ if (isset($_POST['total'])) {
 		// Data loading
 		//$data = $pdf->LoadData('countries.txt');
 		$pdf->AddPage();
-		$pdf->SetFont('Arial','',14);
+		$pdf->Cell(30);
+		$pdf->Cell(30,10,"Pet's Life");
+		$pdf->Ln(20);
+		$pdf->Cell(80);
+		$pdf->Cell(30,10,"Compras",1,0,'C');
+		$pdf->Header();
+		$pdf->Cell(15);
 		$pdf->FancyTable($header,$_SESSION['carrinho']);
+		$pdf->Ln(20);
+		$pdf->Cell(105);
+		$pdf->Cell(70,10,"Total: R$".number_format($_POST['total'],2),1,0,'C');
 		$pdf->Output();
 	
 }
